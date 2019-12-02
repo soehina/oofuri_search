@@ -1,0 +1,22 @@
+version: '3'
+services:
+  db:
+    image: mysql:8.0.17
+    command: mysqld --default-authentication-plugin=mysql_native_password #追加
+    volumes:
+      - ./db/mysql_data:/var/lib/mysql #追加
+    environment:
+      MYSQL_ROOT_PASSWORD: root #変更
+      MYSQL_DATABASE: root
+    ports:
+      - "4306:3306" #4に変更
+
+  web:
+    build: .
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    volumes:
+      - .:/app_name
+    ports:
+      - "3000:3000"
+    links:
+      - db

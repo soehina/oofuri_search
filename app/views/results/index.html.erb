@@ -1,0 +1,25 @@
+<div class="form-group">
+  <%= form_tag('/', :method => 'get') do %>
+    <%= text_field_tag :search %>
+    <%= submit_tag '検索', id: "search_submit",:word => nil  %>
+  <% end %>
+</div>
+<div class="centered">
+  <div class="row mt centered">
+    <div class="col-lg-6 col-lg-offset-3">
+        <h1>検索結果</h1>
+    </div>
+    <div class="col-lg-4">
+      <% @results.each do |result| %>
+        <p><%= result.number %>巻: <%= result.word %></p>
+        <% if @current_user %>
+          <div id="edit">
+            <p><%= link_to('編集',"/results/#{result.id}/edit")%></p>
+            <p><%= link_to('削除',"/results/#{result.id}/destroy",{method:"post"}) %></p>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+    <%= paginate @results %>
+  </div>
+</div>

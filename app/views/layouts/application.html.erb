@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>おお振り用語牽引サイト</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+
+  <!-- Favicons -->
+  <link href="img/favicon.png" rel="icon">
+  <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+
+  <!-- Bootstrap CSS File -->
+  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Libraries CSS Files -->
+  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+  <!-- Main Stylesheet File -->
+  <link href="css/style.css" rel="stylesheet">
+  
+  <script src="https://kit.fontawesome.com/c6599c59c4.js"></script>
+
+  <!-- =======================================================
+    Template Name: Flatty
+    Template URL: https://templatemag.com/flatty-bootstrap-app-landing-page-template/
+    Author: TemplateMag.com
+    License: https://templatemag.com/license/
+  ======================================================= -->
+</head>
+
+<body>
+
+  <!-- Fixed navbar -->
+  <div class="navbar navbar-default navbar-fixed-top">
+  </div>
+  <div id="headerwrap">
+    <div class="container">
+      <div class="row" id="title">
+        <div class="col-lg-6">
+          <h1>『おおきく振りかぶって』<br>牽引サイト</h1>
+          <% if @current_user %>
+            <div class="navbar-collapse collapse">
+              <ul class="nav navbar-nav navbar-right">
+                <li>
+                  <%= link_to("検索結果一覧", "/") %>
+                </li>
+                <li>
+                  <%= link_to("用語登録", "/results/new") %>
+                </li>
+                <li>
+                  <%= link_to("ログアウト","/users/logout" ,{method: :post}) %>
+                </li>
+                <li>
+                  <%= link_to("ユーザー情報編集","/users/#{@current_user.id}/edit") %>
+                </li>
+              </ul>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <!-- /row -->
+    </div>
+    <!-- /container -->
+  </div>
+  <!-- /headerwrap -->
+
+      <%= yield %>
+
+  <!-- /container -->
+  <div id="copyrights">
+    <div class="container">
+      <p>
+        <a href="https://twitter.com/43_yonsan">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </p>
+      <% unless @current_user  %>
+          <%= link_to("Administratorlogin", "/users/login_form",{id:"loginlink"}) %>
+<!--           <%= link_to("Signin", "/users/signup",{id:"loginlink"}) %> -->
+      <% end %>
+      <div class="credits">
+        <!--
+          You are NOT allowed to delete the credit link to TemplateMag with free version.
+          You can delete the credit link only if you bought the pro version.
+          Buy the pro version with working PHP/AJAX contact form: https://templatemag.com/flatty-bootstrap-app-landing-page-template/
+          Licensing information: https://templatemag.com/license/
+        -->
+        Created with Flatty template by <a href="https://templatemag.com/">TemplateMag</a>
+      </div>
+    </div>
+  </div>
+  <!-- / copyrights -->
+
+</body>
+</html>
