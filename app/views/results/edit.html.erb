@@ -2,7 +2,7 @@
   <%= form_tag("/results/#{@result.id}/update",{method: :post}) do %>
       <h1>用語編集</h1>
       <p>
-        巻数： <input type="number" name="number"  min="1" max="31">
+        巻数： <input type="number" name="number"  min="1" max="32">
       </p>
       <p>
         台詞： <textarea name="word"><%= @result.word %></textarea>
