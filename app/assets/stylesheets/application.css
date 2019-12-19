@@ -188,6 +188,7 @@
    @media (max-width: 768px) {
      #search{
       border: 1px solid #ccc;
+      width: 60%;
      }
 
     #title{
